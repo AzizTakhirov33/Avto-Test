@@ -129,6 +129,12 @@ body {
     overflow: hidden;
 }
 
+.solution-image {
+    display: block;
+    margin-top: 20px;
+    max-width: 100%;
+}
+
 .quiz-box .option-container .option.already-answered {
     pointer-events: none;
 

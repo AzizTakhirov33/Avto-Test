@@ -7,7 +7,7 @@ const answersIndicatorContainer = document.querySelector(".answers-indicator");
 const homeBox = document.querySelector(".home-box");
 const quizBox = document.querySelector(".quiz-box");
 const resultBox = document.querySelector(".result-box");
-const questionLimit = 100; // quiz.length
+const questionLimit = 10; // quiz.length
 let questionCounter = 0;
 let currentQuestion;
 let availableQuestions = [];
@@ -116,6 +116,22 @@ function getResult(element) {
     }
     attempt++;
     unclickableOptions();
+
+    // Show the solution image if it exists
+    if (currentQuestion.solutionText) {
+        const img = document.createElement('img');
+        img.src = currentQuestion.solutionText;
+        img.classList.add('solution-image');
+        optionContainer.appendChild(img);
+    }
+}
+
+// Make all the options unclickable once the user selects an option (RESTRICT THE USER TO CHANGE THE OPTION AGAIN)
+function unclickableOptions() {
+    const optionLen = optionContainer.children.length;
+    for (let i = 0; i < optionLen; i++) {
+        optionContainer.children[i].classList.add('already-answered');
+    }
 }
 
 // Make all the options unclickable once the user selects an option (RESTRICT THE USER TO CHANGE THE OPTION AGAIN)
